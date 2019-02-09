@@ -33,8 +33,10 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button button = (Button) findViewById (R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        //sean edited this
+        //the button id is located in content_main
+        Button button2 = (Button) findViewById (R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // do something
                 Toast.makeText(MainActivity.this, "Goodbye now!", Toast.LENGTH_SHORT).show();

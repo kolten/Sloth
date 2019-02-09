@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,9 @@ public class EditorFragment extends Fragment {
 
     private EditorViewModel mViewModel;
 
+    //sean left off here, was trying to get the data the user types...
+    //EditText editText = (EditText) findViewById(R.id.editText);
+
     public static EditorFragment newInstance() {
         return new EditorFragment();
     }
@@ -23,6 +27,10 @@ public class EditorFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
+
+
+
 
         return inflater.inflate(R.layout.editor_fragment, container, false);
     }
@@ -33,5 +41,9 @@ public class EditorFragment extends Fragment {
         mViewModel = ViewModelProviders.of(this).get(EditorViewModel.class);
         // TODO: Use the ViewModel
     }
+
+
+
+
 
 }
