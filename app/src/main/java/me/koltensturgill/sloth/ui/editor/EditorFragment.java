@@ -29,12 +29,16 @@ public class EditorFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.editor_fragment, container, false);
+
+        //Setup for the keyboard button bar recycler view
         RecyclerView buttonBar = (RecyclerView) view.findViewById(R.id.rvKeyboardBar);
         buttons = KeyboardButton.createButtonList();
         KeyboardBarAdapter rvAdapter = new KeyboardBarAdapter(buttons);
         buttonBar.setAdapter(rvAdapter);
-        buttonBar.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
+        buttonBar.setLayoutManager(new LinearLayoutManager(getContext(),
+                                   LinearLayoutManager.HORIZONTAL,false));
 
         return view;
     }

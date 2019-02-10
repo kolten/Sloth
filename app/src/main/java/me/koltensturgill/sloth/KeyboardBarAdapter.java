@@ -11,6 +11,8 @@ import java.util.List;
 
 import me.koltensturgill.sloth.ui.editor.KeyboardButton;
 
+
+//Adapter class for the Keyboard button bar used in the Editor Fragment
 public class KeyboardBarAdapter extends RecyclerView.Adapter<KeyboardBarAdapter.ViewHolder> {
 
     public Context context;
@@ -22,11 +24,12 @@ public class KeyboardBarAdapter extends RecyclerView.Adapter<KeyboardBarAdapter.
             super(itemView);
             barButton = (Button) itemView.findViewById(R.id.keboardrv_button);
 
-            //TODO create variable for button name
+
         }
     }
-
-    private List<KeyboardButton> mButtons; //TODO create barBUtton class
+    //Constructor that will be used to get all of the buttons to be created
+    //for the button bar.
+    private List<KeyboardButton> mButtons;
     public KeyboardBarAdapter(List<KeyboardButton> buttons){
 
         mButtons = buttons;
