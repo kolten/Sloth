@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -31,6 +32,16 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //sean edited this
+        //the button id is located in content_main
+        Button button2 = (Button) findViewById (R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // do something
+                Toast.makeText(MainActivity.this, "Goodbye now!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 

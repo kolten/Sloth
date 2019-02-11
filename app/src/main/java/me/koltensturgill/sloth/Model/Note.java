@@ -1,3 +1,5 @@
+package me.koltensturgill.sloth.Model;
+
 import java.util.ArrayList;
 
 public class Note {
