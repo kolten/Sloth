@@ -6,7 +6,7 @@ Sloth is a Android note taking app devloped by Mobi Social Coding Team
 ## Getting Started with Github
 First of all WELCOME! Github is an amazing tool for collaborating with people and making sure you never lose your code to life's little disaters! Here's a couple of things to help you get started:
 -  First thing's first: [Here's where to download git](https://git-scm.com/book/en/v1/Getting-Started-Installing-Git)
-- This is a super helpful tutorial 
+- [This is a super helpful tutorial](https://learngitbranching.js.org/)
 - if you don't feel comfortable working with the command line (ie the terminal, windows powershell) [Github has a desktop version](https://desktop.github.com/)
 
 ## Making Those PRs
