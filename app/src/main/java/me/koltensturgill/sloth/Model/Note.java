@@ -22,7 +22,10 @@ public class Note {
     @ColumnInfo(name = "body")
     private String body;
 
+
+    @Ignore
     private ArrayList<String> tags;
+    @Ignore
     private int notebookId;
 
     //Base constructor
@@ -48,6 +51,10 @@ public class Note {
 
 
     //Setters
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void changeTitle(String title){this.title = title;}
 
     public void changeNotebookId(int notebookId){this.notebookId = notebookId;}
