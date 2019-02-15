@@ -7,11 +7,11 @@ import android.support.annotation.NonNull;
 
 import java.util.List;
 
-public class NoteViewModel extends AndroidViewModel {
+public class NotesViewModel extends AndroidViewModel {
     private NoteRepository mRepository;
     private LiveData<List<Note>> mAllNotes;
 
-    public NoteViewModel(@NonNull Application application) {
+    public NotesViewModel(@NonNull Application application) {
         super(application);
         mRepository = new NoteRepository(application);
         mAllNotes = mRepository.getAllNotes();
