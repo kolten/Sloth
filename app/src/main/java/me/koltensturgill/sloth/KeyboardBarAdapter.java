@@ -63,6 +63,9 @@ public class KeyboardBarAdapter extends RecyclerView.Adapter<KeyboardBarAdapter.
             public void onClick(View view) {
 
                 mDummyText.getText().insert(mDummyText.getSelectionStart(), keyboardButton.getmMakrdownChar());
+                mDummyText.getText().insert(mDummyText.getSelectionStart(), keyboardButton.getmMakrdownChar());
+                mDummyText.setSelection(mDummyText.getSelectionStart()-1);
+
             }
         });
     }
