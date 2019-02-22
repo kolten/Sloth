@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 
@@ -20,7 +21,6 @@ public class EditorFragment extends Fragment {
 
     private EditorViewModel mViewModel;
     ArrayList<KeyboardButton> buttons;
-
     public static EditorFragment newInstance() {
         return new EditorFragment();
     }
@@ -33,9 +33,10 @@ public class EditorFragment extends Fragment {
         View view = inflater.inflate(R.layout.editor_fragment, container, false);
 
         //Setup for the keyboard button bar recycler view
+        EditText dummyText = (EditText) view.findViewById(R.id.dummy_text);
         RecyclerView buttonBar = (RecyclerView) view.findViewById(R.id.rvKeyboardBar);
         buttons = KeyboardButton.createButtonList();
-        KeyboardBarAdapter rvAdapter = new KeyboardBarAdapter(buttons);
+        KeyboardBarAdapter rvAdapter = new KeyboardBarAdapter(buttons, dummyText);
         buttonBar.setAdapter(rvAdapter);
         buttonBar.setLayoutManager(new LinearLayoutManager(getContext(),
                                    LinearLayoutManager.HORIZONTAL,false));
@@ -49,6 +50,7 @@ public class EditorFragment extends Fragment {
         mViewModel = ViewModelProviders.of(this).get(EditorViewModel.class);
         // TODO: Use the ViewModel
     }
+
 
 
 }

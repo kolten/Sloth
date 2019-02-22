@@ -5,7 +5,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.Button;
+import android.widget.EditText;
 
 import java.util.List;
 
@@ -30,9 +32,11 @@ public class KeyboardBarAdapter extends RecyclerView.Adapter<KeyboardBarAdapter.
     //Constructor that will be used to get all of the buttons to be created
     //for the button bar.
     private List<KeyboardButton> mButtons;
-    public KeyboardBarAdapter(List<KeyboardButton> buttons){
+    public EditText mDummyText;
+    public KeyboardBarAdapter(List<KeyboardButton> buttons, EditText dummyText){
 
         mButtons = buttons;
+        mDummyText = dummyText;
     }
 
     @Override
@@ -50,9 +54,17 @@ public class KeyboardBarAdapter extends RecyclerView.Adapter<KeyboardBarAdapter.
     @Override
     public void onBindViewHolder(KeyboardBarAdapter.ViewHolder viewHolder, int position){
 
-        KeyboardButton keyboardButton = mButtons.get(position);
+        final KeyboardButton keyboardButton = mButtons.get(position);
         Button button = viewHolder.barButton;
         button.setText(keyboardButton.getText());
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mDummyText.getText().insert(mDummyText.getSelectionStart(), keyboardButton.getmMakrdownChar());
+            }
+        });
     }
 
     @Override
