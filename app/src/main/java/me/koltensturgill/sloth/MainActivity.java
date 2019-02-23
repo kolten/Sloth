@@ -1,8 +1,12 @@
 package me.koltensturgill.sloth;
 
 import android.app.Activity;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,6 +23,11 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.List;
+
+import me.koltensturgill.sloth.Model.Note;
+import me.koltensturgill.sloth.Model.NotesViewModel;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -26,6 +35,8 @@ public class MainActivity extends AppCompatActivity
     public static int _CREATE = 1;
 
     EditText editText;
+
+    private NotesViewModel notesViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +67,22 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        // Bind our view model
+        notesViewModel = ViewModelProviders.of(this).get(NotesViewModel.class);
+
+        // Set up the recycler
         RecyclerView recyclerView = findViewById(R.id.recyclerview_notes);
         final NoteListAdapter adapter = new NoteListAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // Create an observer, and update our adapter
+        notesViewModel.getAllNotes().observe(this, new Observer<List<Note>>() {
+            @Override
+            public void onChanged(@Nullable List<Note> notes) {
+                adapter.setNotes(notes);
+            }
+        });
     }
 
     @Override
