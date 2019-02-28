@@ -8,7 +8,6 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 
-import me.koltensturgill.sloth.ui.editor.EditorFragment;
 import me.koltensturgill.sloth.ui.editor.EditorViewModel;
 import me.koltensturgill.sloth.ui.editor.KeyboardButton;
 
