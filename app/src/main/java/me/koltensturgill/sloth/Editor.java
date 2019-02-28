@@ -8,12 +8,10 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 
-import me.koltensturgill.sloth.ui.editor.EditorViewModel;
 import me.koltensturgill.sloth.ui.editor.KeyboardButton;
 
 public class Editor extends AppCompatActivity {
 
-    private EditorViewModel mViewModel;
     ArrayList<KeyboardButton> buttons;
     private EditText editText;
 
