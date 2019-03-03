@@ -27,13 +27,14 @@ import java.util.List;
 
 import me.koltensturgill.sloth.Model.Note;
 import me.koltensturgill.sloth.Model.NotesViewModel;
+import me.koltensturgill.sloth.ui.editor.Utils;
 
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     public static int _CREATE = 1;
-
+    Activity activity;
     EditText editText;
 
     private NotesViewModel notesViewModel;
@@ -41,10 +42,12 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        Utils.setThemeToActivity(this);
         setContentView(R.layout.activity_main);
+        activity = this;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        Utils.setThemeToActivity(activity);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
         final Intent intent = new Intent(this, Editor.class);
