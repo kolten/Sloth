@@ -1,7 +1,9 @@
 package me.koltensturgill.sloth;
 
 import android.app.Activity;
+import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.OnLifecycleEvent;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
@@ -42,7 +44,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        Utils.setThemeToActivity(this);
         setContentView(R.layout.activity_main);
         activity = this;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -154,5 +155,12 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(this, ex.toString(),
                     Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    protected void onRestart()
+    {
+        super.onRestart();
+        recreate();
     }
 }
