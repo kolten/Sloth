@@ -13,8 +13,7 @@ class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected Void doInBackground(final Void... params) {
-        // dao.deleteAll();
-        dao.insert(new Note("", "testing"));
+        dao.getAllNotes();
         return null;
     }
 }
