@@ -32,7 +32,7 @@ import me.koltensturgill.sloth.Model.NotesViewModel;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
-    public static int _CREATE = 1;
+    public static final int NEW_NOTE_ACTIVITY_REQUEST_CODE = 1;
 
     EditText editText;
 
@@ -52,9 +52,7 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-            // .setAction("Action", null).show();
-            startActivityForResult(intent, _CREATE);
+            startActivityForResult(intent, NEW_NOTE_ACTIVITY_REQUEST_CODE);
             }
         });
 
@@ -143,9 +141,15 @@ public class MainActivity extends AppCompatActivity
         try {
             super.onActivityResult(requestCode, resultCode, data);
 
-            if (requestCode == _CREATE  && resultCode == RESULT_OK) {
-
-                String requiredValue = data.getStringExtra("key");
+            if (requestCode == NEW_NOTE_ACTIVITY_REQUEST_CODE  && resultCode == RESULT_OK) {
+                String extra = data.getStringExtra(Editor.EXTRA_EDITOR);
+                /*
+                    TODO: String parsing magic, might need to overload the Note class (more)
+                 */
+                Note note = new Note("hello", extra);
+                notesViewModel.insert(note);
+            } else {
+                Toast.makeText(getApplicationContext(), "Not saved", Toast.LENGTH_SHORT).show();
             }
         } catch (Exception ex) {
             Toast.makeText(this, ex.toString(),

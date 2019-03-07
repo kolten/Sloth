@@ -1,9 +1,13 @@
 package me.koltensturgill.sloth;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.widget.EditText;
 
 import java.util.ArrayList;
@@ -11,6 +15,8 @@ import java.util.ArrayList;
 import me.koltensturgill.sloth.ui.editor.KeyboardButton;
 
 public class Editor extends AppCompatActivity {
+
+    public static final String EXTRA_EDITOR = "com.utamobi.android.sloth.EDITOR";
 
     ArrayList<KeyboardButton> buttons;
     private EditText editText;
@@ -31,4 +37,21 @@ public class Editor extends AppCompatActivity {
 
         }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK){
+            Intent intent = new Intent();
+            // If our EditText is empty, exit
+            if (TextUtils.isEmpty(editText.getText())){
+                setResult(RESULT_CANCELED);
+            }
+            // else, send it back to MainActivity via Intent
+            else {
+                String note = editText.getText().toString();
+                intent.putExtra(EXTRA_EDITOR, note);
+                setResult(RESULT_OK, intent);
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }
