@@ -20,8 +20,8 @@ public class Settings extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        Utils.setThemeToActivity(this, false);
         super.onCreate(savedInstanceState);
-        Utils.setThemeToActivity(this);
         setContentView(R.layout.activity_settings);
 
         switchTheme = findViewById(R.id.swDarkTheme);

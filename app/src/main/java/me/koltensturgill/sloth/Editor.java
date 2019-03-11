@@ -24,8 +24,8 @@ public class Editor extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Utils.setThemeToActivity(this, false);
         super.onCreate(savedInstanceState);
-        Utils.setThemeToActivity(this);
         setContentView(R.layout.editor_activity);
 
         //Setup for the keyboard button bar recycler view

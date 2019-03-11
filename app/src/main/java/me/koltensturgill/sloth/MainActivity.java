@@ -22,6 +22,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -43,12 +44,12 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Utils.setThemeToActivity(this, true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         activity = this;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Utils.setThemeToActivity(activity);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
         final Intent intent = new Intent(this, Editor.class);
