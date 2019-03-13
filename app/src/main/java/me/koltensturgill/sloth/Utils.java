@@ -1,4 +1,4 @@
-package me.koltensturgill.sloth.ui.editor;
+package me.koltensturgill.sloth;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -9,6 +9,11 @@ import java.lang.annotation.Target;
 
 import me.koltensturgill.sloth.R;
 
+
+//This class has methods to set theme to activity by getting activity, checks if its main activity or not
+//change theme private variable from settings when switched to/from dark theme
+//two methods for switch that tracks the position of switch, returns true if checked
+//changes private variable switchCheck to whatever boolean received
 public class Utils
 {
     private static int theme = R.style.AppTheme;

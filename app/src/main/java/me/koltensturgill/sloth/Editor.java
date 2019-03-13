@@ -6,11 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.EditText;
 
-import me.koltensturgill.sloth.ui.editor.Utils;
 import java.util.ArrayList;
 
 import me.koltensturgill.sloth.ui.editor.KeyboardButton;
