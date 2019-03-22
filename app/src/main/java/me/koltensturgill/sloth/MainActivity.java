@@ -2,13 +2,11 @@ package me.koltensturgill.sloth;
 
 import android.app.Activity;
 import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -32,19 +30,20 @@ import me.koltensturgill.sloth.Model.NotesViewModel;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
+    Activity activity;
     public static final int NEW_NOTE_ACTIVITY_REQUEST_CODE = 1;
-
     EditText editText;
 
     private NotesViewModel notesViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Utils.setThemeToActivity(this, true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        activity = this;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
         final Intent intent = new Intent(this, Editor.class);
@@ -155,5 +154,13 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(this, ex.toString(),
                     Toast.LENGTH_SHORT).show();
         }
+    }
+
+    //onRestart method recreates main activity so when theme is changed in settings, activity recreates so new theme can be applied from Utils
+    @Override
+    protected void onRestart()
+    {
+        super.onRestart();
+        recreate();
     }
 }
