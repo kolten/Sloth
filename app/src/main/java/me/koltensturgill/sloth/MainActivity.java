@@ -175,11 +175,11 @@ public class MainActivity extends AppCompatActivity
             else{ //else one line note, set title to the note itself.
                 title = note;
             }
-        //Newline Character found
+        //Newline Character found within max title limit
         } else {
             title = note.substring(0, firstNewLine);
         }
-        //if first character is not a hashtag, insert one at the beginning.
+        //if first character is not a hashtag, insert one at the beginning.pul
         if(title.charAt(0) != '#'){
             title = "#" + title;
         }
