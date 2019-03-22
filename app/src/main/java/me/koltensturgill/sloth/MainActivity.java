@@ -146,7 +146,9 @@ public class MainActivity extends AppCompatActivity
                 /*
                     TODO: String parsing magic, might need to overload the Note class (more)
                  */
-                Note note = new Note("hello", extra);
+                int firstNewLine = extra.indexOf('\n');
+                String title = extra.substring(0,firstNewLine);
+                Note note = new Note(title, extra);
                 notesViewModel.insert(note);
             } else {
                 Toast.makeText(getApplicationContext(), "Not saved", Toast.LENGTH_SHORT).show();
