@@ -143,11 +143,12 @@ public class MainActivity extends AppCompatActivity
 
             if (requestCode == NEW_NOTE_ACTIVITY_REQUEST_CODE  && resultCode == RESULT_OK) {
                 String extra = data.getStringExtra(Editor.EXTRA_EDITOR);
+                String title;
                 /*
                     TODO: String parsing magic, might need to overload the Note class (more)
                  */
-                int firstNewLine = extra.indexOf('\n');
-                String title = extra.substring(0,firstNewLine);
+                //THROWS EXCEPTION IF NO NEWLINE CHARACTER FOUND
+
                 Note note = new Note(title, extra);
                 notesViewModel.insert(note);
             } else {
@@ -155,7 +156,21 @@ public class MainActivity extends AppCompatActivity
             }
         } catch (Exception ex) {
             Toast.makeText(this, ex.toString(),
-                    Toast.LENGTH_SHORT).show();
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+
+    protected String getNoteTitle(String note){
+        int firstNewLine = note.indexOf('\n');
+        String title;
+        //No newline character found
+        if(firstNewLine == -1){
+
+        }
+        title = note.substring(0,firstNewLine);
+        //if first character is not a hashtag, insert one at the beginning.
+        if(title.charAt(0) != '#'){
+            title = "#" + title;
         }
     }
 }
