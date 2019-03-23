@@ -142,12 +142,8 @@ public class MainActivity extends AppCompatActivity
 
             if (requestCode == NEW_NOTE_ACTIVITY_REQUEST_CODE  && resultCode == RESULT_OK) {
                 String extra = data.getStringExtra(Editor.EXTRA_EDITOR);
+                //Determine the note title from the body of the note.
                 String title = getNoteTitle(extra);
-                /*
-                    TODO: String parsing magic, might need to overload the Note class (more)
-                 */
-                //THROWS EXCEPTION IF NO NEWLINE CHARACTER FOUND
-
                 Note note = new Note(title, extra);
                 notesViewModel.insert(note);
             } else {
