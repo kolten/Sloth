@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.EditText;
 
@@ -23,6 +22,7 @@ public class Editor extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Utils.setThemeToActivity(this, false);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.editor_activity);
 
