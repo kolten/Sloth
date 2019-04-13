@@ -144,6 +144,8 @@ public class MainActivity extends AppCompatActivity
                 String extra = data.getStringExtra(Editor.EXTRA_EDITOR);
                 //Determine the note title from the body of the note.
                 String title = getNoteTitle(extra);
+                //Chop the title off the string before creating a note from it.
+                extra = extra.substring(title.length());
                 Note note = new Note(title, extra);
                 notesViewModel.insert(note);
             } else {
@@ -174,7 +176,7 @@ public class MainActivity extends AppCompatActivity
         } else {
             title = note.substring(0, firstNewLine);
         }
-        //if first character is not a hashtag, insert one at the beginning.pul
+        //if first character is not a hashtag, insert one at the beginning
         if(title.charAt(0) != '#'){
             title = "#" + title;
         }
